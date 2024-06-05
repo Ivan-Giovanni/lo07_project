@@ -1,0 +1,62 @@
+
+<!-- ----- début fragmentCaveMenu -->
+
+<nav class="navbar navbar-expand-lg bg-success fixed-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="router2.php?action=CaveAccueil">NZOAFO-ZANGUE</a>
+    <a class="navbar-brand" href="router2.php?action=CaveAccueil"> | </a>
+    <a class="navbar-brand" href="router2.php?action=CaveAccueil">administrateur</a>
+    <a class="navbar-brand" href="router2.php?action=CaveAccueil"> | </a>
+    <a class="navbar-brand" href="router2.php?action=CaveAccueil">Le Boss</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" 
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">BANQUE</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="router2.php?action=vinReadAll">Liste des vins</a></li>
+            <li><a class="dropdown-item" href="router2.php?action=vinReadId&target=vinReadOne">Sélection d'un vin par son id</a></li>
+            <li><a class="dropdown-item" href="router2.php?action=vinCreate">Insertion d'un vin</a></li> 
+            <li><a class="dropdown-item" href="router2.php?action=vinReadId&target=vinDelete">Suppression d'un vin</a></li> 
+          </ul>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">CLIENT</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="router2.php?action=producteurReadAll">Liste des producteurs</a></li>
+            <li><a class="dropdown-item" href="router2.php?action=producteurReadId&target=producteurReadOne">Sélection d'un producteur par son id</a></li>
+            <li><a class="dropdown-item" href="router2.php?action=producteurCreate">insertion d'un producteur</a></li>
+            <li><a class="dropdown-item" href="router2.php?action=prodReadAllRegion">Liste sans doublons des régions</a></li>
+            <li><a class="dropdown-item" href="router2.php?action=prodReadAllRegionProd">Nombre de producteurs par région</a></li>
+            <li><a class="dropdown-item" href="router2.php?action=producteurReadId&target=producteurDelete">Suppression d'un producteur</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">INNOVATIONS</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="router2.php?action=recolteRequete1">Sélection récolte N°1</a></li>
+            <li><a class="dropdown-item" href="router2.php?action=recolteRequete2">Sélection récolte N°2</a></li>
+            <li><a class="dropdown-item" href="router2.php?action=ajouterRecolte">Ajouter nouvelle récolte</a></li>
+          </ul>
+        </li>
+        
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">SE CONNECTER</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="?">Proposition d'amélioration</a></li> 
+          </ul>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav> 
+
+<!-- ----- fin fragmentCaveMenu -->
+
