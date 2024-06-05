@@ -12,7 +12,7 @@ $query_string = $_SERVER['QUERY_STRING'];
 // une table de hachage (clé + valeur)
 parse_str($query_string, $param);
 
-// modifazazzezezezeze modfefefefefefnz zezezeze
+// modifazazzezezezeze modfefefefefefnz zezezeze zezeze
 
 // --- $action contient le nom de la méthode statique recherchée
 $action = htmlspecialchars($param["action"]);
