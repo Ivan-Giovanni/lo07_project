@@ -1,7 +1,7 @@
 
 <!-- ----- debut ControllerAdministrateur -->
 <?php
-require_once '../model/ModelAdministrateur.php';
+require_once '../model/ModelPersonne.php';
 
 class ControllerAdministrateur {
     // --- page d'acceuil
@@ -13,7 +13,7 @@ class ControllerAdministrateur {
         require ($vue);
     }
 
-    // --- Liste des vins
+    // --- Liste des administrateurs
     public static function administrateurReadAll() {
         $results = ModelAdministrateur::getAll();
         // ----- Construction chemin de la vue
@@ -31,7 +31,7 @@ class ControllerAdministrateur {
         $target = $args['target'];
 
         if (DEBUG) {
-            echo ("ControlleurVin:vinReadId : target = $target</br>");
+            echo ("ControlleurVin:administrateurReadId : target = $target</br>");
         }
 
         // ----- Construction chemin de la vue
@@ -74,7 +74,7 @@ class ControllerAdministrateur {
 
     // Fonction supp ?
 
-    // --- Liste des vins
+    // --- Liste des administrateurs
     public static function prodReadAllRegion() {
         $results = ModelAdministrateur::getAllRegion();
         // ----- Construction chemin de la vue

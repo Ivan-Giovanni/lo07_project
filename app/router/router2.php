@@ -25,29 +25,29 @@ $args = $param;
 
 // --- Liste des méthodes autorisées
 switch ($action) {
-  case "vinReadAll":
-  case "vinReadOne":
-  case "vinReadId":
-  case "vinCreate":
-  case "vinCreated":
-  case "vinDelete":
+  case "administrateurReadAll":
+  case "administrateurReadOne":
+  case "administrateurReadId":
+  case "administrateurCreate":
+  case "administrateurCreated":
+  case "administrateurDelete":
     // --- passage des arguments au controleur
-    ControllerVin::$action($args);
-  case "producteurReadAll":
-  case "producteurReadOne":
-  case "producteurReadId":
-  case "producteurCreate":
-  case "producteurCreated":
+    ControllerAdministrateur::$action($args);
+  case "banqueReadAll":
+  case "banqueReadOne":
+  case "banqueReadId":
+  case "banqueCreate":
+  case "banqueCreated":
   case "prodReadAllRegion":
   case "prodReadAllRegionProd":
-  case "producteurDelete":
-    ControllerProducteur::$action($args);
+  case "banqueDelete":
+    ControllerBanque::$action($args);
   //
-  case "recolteRequete1":
-  case "recolteRequete2":
-  case "ajouterRecolte":
-  case "recolteCreated":
-    ControllerRecolte::$action($args);
+  case "clientRequete1":
+  case "clientRequete2":
+  case "ajouterClient":
+  case "clientCreated":
+    ControllerClient::$action($args);
     break;
 
   case "mesPropositions":
@@ -57,7 +57,7 @@ switch ($action) {
   // Tache par défaut
   default:
     $action = "caveAccueil";
-    ControllerVin::$action($args);
+    ControllerAdministrateur::$action($args);
 }
 ?>
 <!-- ----- Fin Router1 -->
