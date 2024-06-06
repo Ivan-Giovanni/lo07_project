@@ -9,7 +9,7 @@ class ControllerBanque {
         include 'config.php';
         $vue = $root . '/app/view/viewCaveAccueil.php';
         if (DEBUG)
-            echo ("ControllerVin : caveAccueil : vue = $vue");
+            echo ("ControllerBanque : caveAccueil : vue = $vue");
         require ($vue);
     }
 

@@ -5,17 +5,16 @@ require_once 'Model.php';
 
 class ModelBanque
 {
-    private $id, $cru, $annee, $degre, $bio;
+    private $id, $label, $pays;
 
     // pas possible d'avoir 2 constructeurs
-    public function __construct($id = NULL, $cru = NULL, $annee = NULL, $degre = NULL)
+    public function __construct($id = NULL, $label = NULL, $pays = NULL)
     {
         // valeurs nulles si pas de passage de parametres
         if (!is_null($id)) {
             $this->id = $id;
-            $this->cru = $cru;
-            $this->annee = $annee;
-            $this->degre = $degre;
+            $this->label = $label;
+            $this->pays = $pays;
         }
     }
 
@@ -24,39 +23,34 @@ class ModelBanque
         $this->id = $id;
     }
 
-    function setCru($cru)
+    function setLabel($label)
     {
-        $this->cru = $cru;
+        $this->label = $label;
     }
 
-    function setAnnee($annee)
+    function setPays($pays)
     {
-        $this->annee = $annee;
+        $this->pays = $pays;
     }
 
-    function setDegre($degre)
-    {
-        $this->degre = $degre;
-    }
-
-    function getId()
+    /**
+     * @return mixed
+     */
+    public function getId()
     {
         return $this->id;
     }
 
-    function getCru()
-    {
-        return $this->cru;
+    public function getLabel(){
+        return $this->label;
     }
 
-    function getAnnee()
+    /**
+     * @return mixed|null
+     */
+    public function getPays()
     {
-        return $this->annee;
-    }
-
-    function getDegre()
-    {
-        return $this->degre;
+        return $this->pays;
     }
 
 
@@ -152,7 +146,7 @@ class ModelBanque
 
     public static function update()
     {
-        echo ("ModelBanque : update() TODO ....");
+        echo("ModelBanque : update() TODO ....");
         return null;
     }
 
@@ -174,5 +168,6 @@ class ModelBanque
     }
 
 }
+
 ?>
 <!-- ----- fin ModelBanque -->

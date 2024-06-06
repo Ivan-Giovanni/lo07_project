@@ -1,10 +1,10 @@
 <!-- ----- debut Router1 -->
 <?php
-require ('../controller/ControllerAdminstrateur.php');
-require ('../controller/ControllerBanque.php');
-require ('../controller/ControllerClient.php');
-require ('../controller/ControllerCompte.php');
-require ('../controller/ControllerResidence.php');
+require('../controller/ControllerAdminstrateur.php');
+require('../controller/ControllerBanque.php');
+require('../controller/ControllerClient.php');
+require('../controller/ControllerCompte.php');
+require('../controller/ControllerResidence.php');
 
 // --- récupération de l'action passée dans l'URL
 $query_string = $_SERVER['QUERY_STRING'];
@@ -25,39 +25,31 @@ $args = $param;
 
 // --- Liste des méthodes autorisées
 switch ($action) {
-  case "administrateurReadAll":
-  case "administrateurReadOne":
-  case "administrateurReadId":
-  case "administrateurCreate":
-  case "administrateurCreated":
-  case "administrateurDelete":
-    // --- passage des arguments au controleur
-    ControllerAdministrateur::$action($args);
-  case "banqueReadAll":
-  case "banqueReadOne":
-  case "banqueReadId":
-  case "banqueCreate":
-  case "banqueCreated":
-  case "prodReadAllRegion":
-  case "prodReadAllRegionProd":
-  case "banqueDelete":
-    ControllerBanque::$action($args);
-  //
-  case "clientRequete1":
-  case "clientRequete2":
-  case "ajouterClient":
-  case "clientCreated":
-    ControllerClient::$action($args);
-    break;
+    case "clientReadAll":
+    case "clientReadAllAdmin":
+        ControllerClient::$action($args);
+    // -----------------------------------------------//
+    case "compteReadAllClient":
+    case "compteReadAllBanque";
+        ControllerCompte::$action($args);
+    // -----------------------------------------------//
+    case "residenceReadAllClient":
+        ControllerResidence::$action($args);
+    // -----------------------------------------------//
+    case "banqueReadAll":
+    case "banqueInsert":
+        ControllerBanque::$action($args);
 
-  case "mesPropositions":
-    ControllerCave::$action($args);
-    break;
+        break;
 
-  // Tache par défaut
-  default:
-    $action = "caveAccueil";
-    ControllerAdministrateur::$action($args);
+    case "mesPropositions":
+        ControllerCave::$action($args);
+        break;
+
+    // Tache par défaut
+    default:
+        $action = "caveAccueil";
+        ControllerAdministrateur::$action($args);
 }
 ?>
 <!-- ----- Fin Router1 -->

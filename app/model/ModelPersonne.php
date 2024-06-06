@@ -5,6 +5,9 @@ require_once 'Model.php';
 
 class ModelPersonne
 {
+    const ADMINISTRATEUR = 0;
+    const CLIENT = 1;
+
     private $id, $cru, $annee, $degre, $bio;
 
     // pas possible d'avoir 2 constructeurs
