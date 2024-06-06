@@ -13,7 +13,7 @@ $query_string = $_SERVER['QUERY_STRING'];
 // une table de hachage (clé + valeur)
 parse_str($query_string, $param);
 
-// --- $action contient le nom de la méthode statique recherchée
+// --- $action contient le nom de la méthode statique recherchee
 $action = htmlspecialchars($param["action"]);
 
 // --- On supprime l'élément action de la structure
