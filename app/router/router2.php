@@ -40,6 +40,8 @@ switch ($action) {
     case "banqueInsert":
     case "banqueCreate":
     case "banqueCreated":
+    case "banqueIdFound":
+    case "banqueSearchIdByName":
         ControllerBanque::$action($args);
 
         break;

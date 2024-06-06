@@ -94,6 +94,23 @@ class ModelBanque
             return -1;
         }
     }
+
+    public static function getBanqueId($label) {
+        try {
+            $database = Model::getInstance();
+            $query = "select id from banque where label = :label";
+            $statement = $database->prepare($query);
+            $statement->execute([
+                    'label' => $label
+            ]);
+            $results = $statement->fetchColumn();
+
+            return $results;
+        } catch (PDOException $e) {
+            printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
+            return NULL;
+        }
+    }
 }
 
 ?>

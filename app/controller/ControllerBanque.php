@@ -43,6 +43,22 @@ class ControllerBanque {
         require ($vue);
     }
 
+    public static function banqueSearchIdByName() {
+        include 'config.php';
+        $vue = $root . '/app/view/banque/viewSearchIdByName.php';
+        require ($vue);
+    }
+
+    public static function banqueIdFound() {
+        $banqueId = ModelBanque::getBanqueId(
+                htmlspecialchars($_GET['label'])
+        );
+        $results = ModelCompte::getAllCompte($banqueId);
+        include 'config.php';
+        $vue = $root. '/app/view/compte/viewAll.php';
+        require ($vue);
+    }
+
 }
 ?>
 <!-- ----- fin ControllerBanque -->
