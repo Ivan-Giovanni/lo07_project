@@ -53,37 +53,6 @@ class ModelBanque
         return $this->pays;
     }
 
-
-    // retourne une liste des id
-    public static function getAllId()
-    {
-        try {
-            $database = Model::getInstance();
-            $query = "select id from banque";
-            $statement = $database->prepare($query);
-            $statement->execute();
-            $results = $statement->fetchAll(PDO::FETCH_COLUMN, 0);
-            return $results;
-        } catch (PDOException $e) {
-            printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
-            return NULL;
-        }
-    }
-
-    public static function getMany($query)
-    {
-        try {
-            $database = Model::getInstance();
-            $statement = $database->prepare($query);
-            $statement->execute();
-            $results = $statement->fetchAll(PDO::FETCH_CLASS, "ModelBanque");
-            return $results;
-        } catch (PDOException $e) {
-            printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
-            return NULL;
-        }
-    }
-
     public static function getAll()
     {
         try {
@@ -99,24 +68,7 @@ class ModelBanque
         }
     }
 
-    public static function getOne($id)
-    {
-        try {
-            $database = Model::getInstance();
-            $query = "select * from banque where id = :id";
-            $statement = $database->prepare($query);
-            $statement->execute([
-                'id' => $id
-            ]);
-            $results = $statement->fetchAll(PDO::FETCH_CLASS, "ModelBanque");
-            return $results;
-        } catch (PDOException $e) {
-            printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
-            return NULL;
-        }
-    }
-
-    public static function insert($cru, $annee, $degre)
+    public static function insert($label, $pays)
     {
         try {
             $database = Model::getInstance();
@@ -129,13 +81,12 @@ class ModelBanque
             $id++;
 
             // ajout d'un nouveau tuple;
-            $query = "insert into banque value (:id, :cru, :annee, :degre)";
+            $query = "insert into banque value (:id, :label, :pays)";
             $statement = $database->prepare($query);
             $statement->execute([
                 'id' => $id,
-                'cru' => $cru,
-                'annee' => $annee,
-                'degre' => $degre
+                'label' => $label,
+                'pays' => $pays
             ]);
             return $id;
         } catch (PDOException $e) {
@@ -143,30 +94,6 @@ class ModelBanque
             return -1;
         }
     }
-
-    public static function update()
-    {
-        echo("ModelBanque : update() TODO ....");
-        return null;
-    }
-
-    public static function delete($id)
-    {
-        try {
-            $database = Model::getInstance();
-            $query = "delete from banque where id = :id";
-            $statement = $database->prepare($query);
-            $statement->execute([
-                'id' => $id
-            ]);
-            $results = $statement->fetchAll(PDO::FETCH_CLASS, "ModelBanque");
-            return $results;
-        } catch (PDOException $e) {
-            printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
-            return NULL;
-        }
-    }
-
 }
 
 ?>
