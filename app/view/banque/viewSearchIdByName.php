@@ -1,8 +1,7 @@
-
 <!-- ----- début viewInsert -->
 
 <?php
-require ($root . '/app/view/fragment/fragmentCaveHeader.html');
+require($root . '/app/view/fragment/fragmentCaveHeader.html');
 ?>
 
 <body>
@@ -15,7 +14,15 @@ require ($root . '/app/view/fragment/fragmentCaveHeader.html');
     <form role="form" method='get' action='router2.php'>
         <div class="form-group">
             <input type="hidden" name='action' value='banqueIdFound'>
-            <label class='w-25' for="id">Label : </label><input type="text" name='label' size='75' value='UBA'> <br/>
+
+            <label class='w-25' for="id">Selectionnez la banque : </label>
+            <select name="label" id="label">
+                <?php
+                foreach ($results as $banque) {
+                    echo("<option value=\"" . htmlspecialchars($banque->getLabel()) . "\">" . htmlspecialchars($banque->getId()) . " : " . htmlspecialchars($banque->getLabel()) . " : " . htmlspecialchars($banque->getPays()) . "</option>");
+                }
+                ?>
+            </select>
         </div>
         <p/>
         <br/>
@@ -27,6 +34,3 @@ require ($root . '/app/view/fragment/fragmentCaveHeader.html');
 
 <!-- ----- fin viewInsert -->
 
-
-
-<?php

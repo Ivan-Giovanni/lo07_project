@@ -44,6 +44,7 @@ class ControllerBanque {
     }
 
     public static function banqueSearchIdByName() {
+        $results = ModelBanque::getAll();
         include 'config.php';
         $vue = $root . '/app/view/banque/viewSearchIdByName.php';
         require ($vue);
@@ -53,6 +54,7 @@ class ControllerBanque {
         $banqueId = ModelBanque::getBanqueId(
                 htmlspecialchars($_GET['label'])
         );
+
         $results = ModelCompte::getAllCompte($banqueId);
         include 'config.php';
         $vue = $root. '/app/view/compte/viewAll.php';
