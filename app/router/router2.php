@@ -5,6 +5,7 @@ require('../controller/ControllerBanque.php');
 require('../controller/ControllerClient.php');
 require('../controller/ControllerCompte.php');
 require('../controller/ControllerResidence.php');
+require('../controller/ControllerCave.php');
 
 // --- récupération de l'action passée dans l'URL
 $query_string = $_SERVER['QUERY_STRING'];
@@ -26,15 +27,21 @@ $args = $param;
 // --- Liste des méthodes autorisées
 switch ($action) {
     case "clientReadAll":
-    case "clientReadAllAdmin":
         ControllerClient::$action($args);
+        break;
+    // -----------------------------------------------//
+    case "adminReadAll":
+        ControllerAdministrateur::$action($args);
+        break;
     // -----------------------------------------------//
     case "compteReadAllClient":
     case "compteReadAllBanque";
         ControllerCompte::$action($args);
+        break;
     // -----------------------------------------------//
     case "residenceReadAllClient":
         ControllerResidence::$action($args);
+        break;
     // -----------------------------------------------//
     case "banqueReadAll":
     case "banqueInsert":
@@ -43,7 +50,6 @@ switch ($action) {
     case "banqueIdFound":
     case "banqueSearchIdByName":
         ControllerBanque::$action($args);
-
         break;
 
     case "mesPropositions":
