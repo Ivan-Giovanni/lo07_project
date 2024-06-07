@@ -5,167 +5,110 @@ require_once 'Model.php';
 
 class ModelResidence
 {
-    private $id, $cru, $annee, $degre, $bio;
+    private $id, $label, $ville, $prix, $personne_id;
 
     // pas possible d'avoir 2 constructeurs
-    public function __construct($id = NULL, $cru = NULL, $annee = NULL, $degre = NULL)
+    public function __construct($id = NULL, $label = NULL, $ville = NULL, $prix = NULL,  $personne_id = NULL)
     {
         // valeurs nulles si pas de passage de parametres
         if (!is_null($id)) {
             $this->id = $id;
-            $this->cru = $cru;
-            $this->annee = $annee;
-            $this->degre = $degre;
+            $this->label = $label;
+            $this->ville = $ville;
+            $this->prix = $prix;
+            $this->personne_id = $personne_id;
         }
     }
 
-    function setId($id)
-    {
-        $this->id = $id;
-    }
-
-    function setCru($cru)
-    {
-        $this->cru = $cru;
-    }
-
-    function setAnnee($annee)
-    {
-        $this->annee = $annee;
-    }
-
-    function setDegre($degre)
-    {
-        $this->degre = $degre;
-    }
-
-    function getId()
+    /**
+     * @return mixed
+     */
+    public function getId()
     {
         return $this->id;
     }
 
-    function getCru()
+    /**
+     * @param mixed $id
+     */
+    public function setId($id)
     {
-        return $this->cru;
+        $this->id = $id;
     }
 
-    function getAnnee()
+    /**
+     * @return mixed|null
+     */
+    public function getLabel()
     {
-        return $this->annee;
+        return $this->label;
     }
 
-    function getDegre()
+    /**
+     * @param mixed|null $label
+     */
+    public function setLabel($label)
     {
-        return $this->degre;
+        $this->label = $label;
+    }
+
+    /**
+     * @return mixed|null
+     */
+    public function getVille()
+    {
+        return $this->ville;
+    }
+
+    /**
+     * @param mixed|null $ville
+     */
+    public function setVille($ville)
+    {
+        $this->ville = $ville;
+    }
+
+    /**
+     * @return mixed|null
+     */
+    public function getPrix()
+    {
+        return $this->prix;
+    }
+
+    /**
+     * @param mixed|null $prix
+     */
+    public function setPrix($prix)
+    {
+        $this->prix = $prix;
+    }
+
+    /**
+     * @return mixed|null
+     */
+    public function getPersonneId()
+    {
+        return $this->personne_id;
+    }
+
+    /**
+     * @param mixed|null $personne_id
+     */
+    public function setPersonneId($personne_id)
+    {
+        $this->personne_id = $personne_id;
     }
 
 
-    // retourne une liste des id
-    public static function getAllId()
+    public static function getAllResidencePersonne()
     {
         try {
             $database = Model::getInstance();
-            $query = "select id from residence";
+            $query = "SELECT personne.nom, personne.prenom, residence.label, residence.ville, residence.prix FROM residence, personne WHERE personne.id = residence.personne_id AND personne.statut = 1;";
             $statement = $database->prepare($query);
             $statement->execute();
-            $results = $statement->fetchAll(PDO::FETCH_COLUMN, 0);
-            return $results;
-        } catch (PDOException $e) {
-            printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
-            return NULL;
-        }
-    }
-
-    public static function getMany($query)
-    {
-        try {
-            $database = Model::getInstance();
-            $statement = $database->prepare($query);
-            $statement->execute();
-            $results = $statement->fetchAll(PDO::FETCH_CLASS, "ModelResidence");
-            return $results;
-        } catch (PDOException $e) {
-            printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
-            return NULL;
-        }
-    }
-
-    public static function getAll()
-    {
-        try {
-            $database = Model::getInstance();
-            $query = "select * from residence";
-            $statement = $database->prepare($query);
-            $statement->execute();
-            $results = $statement->fetchAll(PDO::FETCH_CLASS, "ModelResidence");
-            return $results;
-        } catch (PDOException $e) {
-            printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
-            return NULL;
-        }
-    }
-
-    public static function getOne($id)
-    {
-        try {
-            $database = Model::getInstance();
-            $query = "select * from residence where id = :id";
-            $statement = $database->prepare($query);
-            $statement->execute([
-                'id' => $id
-            ]);
-            $results = $statement->fetchAll(PDO::FETCH_CLASS, "ModelResidence");
-            return $results;
-        } catch (PDOException $e) {
-            printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
-            return NULL;
-        }
-    }
-
-    public static function insert($cru, $annee, $degre)
-    {
-        try {
-            $database = Model::getInstance();
-
-            // recherche de la valeur de la clé = max(id) + 1
-            $query = "select max(id) from residence";
-            $statement = $database->query($query);
-            $tuple = $statement->fetch();
-            $id = $tuple['0'];
-            $id++;
-
-            // ajout d'un nouveau tuple;
-            $query = "insert into residence value (:id, :cru, :annee, :degre)";
-            $statement = $database->prepare($query);
-            $statement->execute([
-                'id' => $id,
-                'cru' => $cru,
-                'annee' => $annee,
-                'degre' => $degre
-            ]);
-            return $id;
-        } catch (PDOException $e) {
-            printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
-            return -1;
-        }
-    }
-
-    public static function update()
-    {
-        echo ("ModelResidence : update() TODO ....");
-        return null;
-    }
-
-    public static function delete($id)
-    {
-        try {
-            $database = Model::getInstance();
-            $query = "delete from residence where id = :id";
-            $statement = $database->prepare($query);
-            $statement->execute([
-                'id' => $id
-            ]);
-            $results = $statement->fetchAll(PDO::FETCH_CLASS, "ModelResidence");
+            $results = $statement->fetchAll();
             return $results;
         } catch (PDOException $e) {
             printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());

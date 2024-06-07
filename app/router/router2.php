@@ -38,7 +38,7 @@ switch ($action) {
         ControllerCompte::$action($args);
         break;
     // -----------------------------------------------//
-    case "residenceReadAllClient":
+    case "residenceReadAll":
         ControllerResidence::$action($args);
         break;
     // -----------------------------------------------//

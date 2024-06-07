@@ -124,7 +124,7 @@ class ModelCompte
     {
         try {
             $database = Model::getInstance();
-            $query = "SELECT personne.nom, personne.prenom, banque.label, banque.pays, compte.label, compte.montant FROM personne, banque, compte WHERE personne.id = compte.personne_id AND banque.id = compte.banque_id;";
+            $query = "SELECT personne.nom, personne.prenom, banque.label, banque.pays, compte.label, compte.montant FROM personne, banque, compte WHERE personne.id = compte.personne_id AND banque.id = compte.banque_id AND personne.statut = 1;";
             $statement = $database->prepare($query);
             $statement->execute();
             $results = $statement->fetchAll();
