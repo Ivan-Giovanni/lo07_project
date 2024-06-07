@@ -15,18 +15,21 @@ require($root . '/app/view/fragment/fragmentCaveHeader.html');
         <div class="form-group">
             <input type="hidden" name='action' value='banqueIdFound'>
 
-            <label class='w-25' for="id">Selectionnez la banque : </label>
+            <div class='mt-2 mb-2 p-2'>
+                <h2 style='color: red; text-align: center'>Sélectionnez une banque de cette liste</h2>
+            </div>
+
             <select name="label" id="label">
                 <?php
                 foreach ($results as $banque) {
-                    echo("<option value=\"" . htmlspecialchars($banque->getLabel()) . "\">" . htmlspecialchars($banque->getId()) . " : " . htmlspecialchars($banque->getLabel()) . " : " . htmlspecialchars($banque->getPays()) . "</option>");
+                    echo("<option value=\"" . htmlspecialchars($banque->getLabel()) . "\">" . htmlspecialchars($banque->getLabel()) . "</option>");
                 }
                 ?>
             </select>
         </div>
         <p/>
         <br/>
-        <button class="btn btn-primary" type="submit">Go</button>
+        <button class="btn btn-primary" type="submit">Submit</button>
     </form>
     <p/>
 </div>

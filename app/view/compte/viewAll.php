@@ -24,7 +24,7 @@ require($root . '/app/view/fragment/fragmentCaveHeader.html');
         <tbody>
         <?php
         echo("<div class='mt-2 mb-2 p-2'>");
-        echo("<h2 style='color: red; text-align: center'>Liste des comptes d'une banque</h2>");
+        echo("<h2 style='color: red; text-align: center'>Liste des comptes de cette banque</h2>");
         echo("</div>");
         // La liste des vins est dans une variable $results
         foreach ($results as $element) {
