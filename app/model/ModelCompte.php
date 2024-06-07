@@ -120,6 +120,21 @@ class ModelCompte
         }
     }
 
+    public static function getAllComptePersonnePays()
+    {
+        try {
+            $database = Model::getInstance();
+            $query = "SELECT personne.nom, personne.prenom, banque.label, banque.pays, compte.label, compte.montant FROM personne, banque, compte WHERE personne.id = compte.personne_id AND banque.id = compte.banque_id;";
+            $statement = $database->prepare($query);
+            $statement->execute();
+            $results = $statement->fetchAll();
+            return $results;
+        } catch (PDOException $e) {
+            printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
+            return NULL;
+        }
+    }
+
 }
 ?>
 <!-- ----- fin ModelCompte -->

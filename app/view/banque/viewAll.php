@@ -14,7 +14,6 @@ require($root . '/app/view/fragment/fragmentCaveHeader.html');
     <table class="table table-striped table-bordered">
         <thead>
         <tr>
-            <th scope="col">id</th>
             <th scope="col">label</th>
             <th scope="col">pays</th>
         </tr>
@@ -27,8 +26,7 @@ require($root . '/app/view/fragment/fragmentCaveHeader.html');
         // La liste des vins est dans une variable $results
         foreach ($results as $element) {
             printf(
-                "<tr><td>%d</td><td>%s</td><td>%s</td></tr>",
-                $element->getId(),
+                "<tr><td>%s</td><td>%s</td></tr>",
                 $element->getLabel(),
                 $element->getPays()
             );

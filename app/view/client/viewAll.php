@@ -14,11 +14,10 @@ require($root . '/app/view/fragment/fragmentCaveHeader.html');
     <table class="table table-striped table-bordered">
         <thead>
         <tr>
-            <th scope="col">id</th>
             <th scope="col">nom</th>
             <th scope="col">prenom</th>
-            <th scope="col">statut</th>
             <th scope="col">login</th>
+            <th scope="col">password</th>
         </tr>
         </thead>
         <tbody>
@@ -29,12 +28,11 @@ require($root . '/app/view/fragment/fragmentCaveHeader.html');
         // La liste des vins est dans une variable $results
         foreach ($results as $element) {
             printf(
-                "<tr><td>%d</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>",
-                $element->getId(),
+                "<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>",
                 $element->getNom(),
                 $element->getPrenom(),
-                $element->getStatut(),
-                $element->getLogin()
+                $element->getLogin(),
+                $element->getPassword()
             );
         }
         ?>

@@ -34,8 +34,7 @@ switch ($action) {
         ControllerAdministrateur::$action($args);
         break;
     // -----------------------------------------------//
-    case "compteReadAllClient":
-    case "compteReadAllBanque";
+    case "compteReadAll":
         ControllerCompte::$action($args);
         break;
     // -----------------------------------------------//
