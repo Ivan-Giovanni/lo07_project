@@ -35,6 +35,8 @@ switch ($action) {
         break;
     // -----------------------------------------------//
     case "compteReadAll":
+    case "compteSelectForTransfert":
+    case "transfertInitie":
         ControllerCompte::$action($args);
         break;
     // -----------------------------------------------//

@@ -135,6 +135,45 @@ class ModelCompte
         }
     }
 
+    public static function getAllComptePersonne($personne_id)
+    {
+        try {
+            $database = Model::getInstance();
+            $query = "select * from compte where personne_id = :personne_id";
+            $statement = $database->prepare($query);
+            $statement->execute([
+                'personne_id' => $personne_id
+            ]);
+            $results = $statement->fetchAll(PDO::FETCH_CLASS, "ModelCompte");
+
+            return $results;
+        } catch (PDOException $e) {
+            printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
+            return NULL;
+        }
+    }
+
+
+    public static function transferer($emetteur_id, $receveur_id, $montant)
+    {
+        try {
+            $database = Model::getInstance();
+            $query = "UPDATE compte SET montant = CASE WHEN id = :emetteur_id THEN montant - :montant WHEN id = :receveur_id THEN montant + :montant END WHERE id IN (:receveur_id, :emetteur_id);";
+            $statement = $database->prepare($query);
+            $statement->execute([
+                'emetteur_id' => $emetteur_id,
+                'receveur_id' => $receveur_id,
+                'montant' => $montant
+            ]);
+            $results = $statement->fetchAll(PDO::FETCH_CLASS, "ModelCompte");
+
+            return $results;
+        } catch (PDOException $e) {
+            printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
+            return NULL;
+        }
+    }
+
 }
 ?>
 <!-- ----- fin ModelCompte -->

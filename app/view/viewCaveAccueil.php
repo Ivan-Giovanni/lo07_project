@@ -4,7 +4,7 @@
 <body>
   <div class="container">
     <?php
-    include 'fragment/fragmentCaveMenu.html';
+    include 'fragment/fragmentCaveMenuClient.html';
     include 'fragment/fragmentCaveJumbotron.html';
     ?>
   </div>   
