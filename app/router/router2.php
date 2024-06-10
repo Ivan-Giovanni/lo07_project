@@ -27,6 +27,9 @@ $args = $param;
 // --- Liste des méthodes autorisées
 switch ($action) {
     case "clientReadAll":
+    case "clientLogin":
+    case "clientLoggedIn":
+    case "clientDeconnexion":
         ControllerClient::$action($args);
         break;
     // -----------------------------------------------//

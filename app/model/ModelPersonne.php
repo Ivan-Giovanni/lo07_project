@@ -170,6 +170,24 @@ class ModelPersonne
         }
     }
 
+    public static function checkIfExists($login, $password)
+    {
+        try {
+            $database = Model::getInstance();
+            $query = "select * from personne where login = :login and password = :password";
+            $statement = $database->prepare($query);
+            $statement->execute([
+                "login" => $login,
+                "password" => $password
+            ]);
+            $results = $statement->fetchAll();
+            return $results;
+        } catch (PDOException $e) {
+            printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
+            return NULL;
+        }
+    }
+
 }
 ?>
 <!-- ----- fin ModelPersonne -->

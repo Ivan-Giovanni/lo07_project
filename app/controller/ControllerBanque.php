@@ -32,7 +32,6 @@ class ControllerBanque {
         require ($vue);
     }
     public static function banqueCreated() {
-        // ajouter une validation des informations du formulaire
         $results = ModelBanque::insert(
             htmlspecialchars($_GET['label']),
             htmlspecialchars($_GET['pays'])

@@ -1,14 +1,24 @@
+<?php
+?>
+
 
 <!-- ----- début fragmentCaveMenu -->
 
 <nav class="navbar navbar-expand-lg bg-warning fixed-top">
     <div class="container-fluid">
-        <a class="navbar-brand" href="router2.php?action=CaveAccueil">NZOAFO-ZANGUE</a>
+        <a class="navbar-brand" href="router2.php?action=CaveAccueil">LO07 PROJET</a>
         <a class="navbar-brand" href="router2.php?action=CaveAccueil"> | </a>
-        <a class="navbar-brand" href="router2.php?action=CaveAccueil">client</a>
+        <a class="navbar-brand" href="router2.php?action=CaveAccueil"> <?php
+            foreach ($results as $element) {
+                printf($element["nom"]);
+            }
+            ?> </a>
         <a class="navbar-brand" href="router2.php?action=CaveAccueil"> | </a>
-        <a class="navbar-brand" href="router2.php?action=CaveAccueil">PRIOR Beatrice</a>
-        <a class="navbar-brand" href="router2.php?action=CaveAccueil"> | </a>
+        <a class="navbar-brand" href="router2.php?action=CaveAccueil"> <?php
+            foreach ($results as $element) {
+                printf($element["prenom"]);
+            }
+            ?> </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -62,4 +72,5 @@
 </nav>
 
 <!-- ----- fin fragmentCaveMenu -->
+
 
