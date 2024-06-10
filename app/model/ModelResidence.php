@@ -116,6 +116,21 @@ class ModelResidence
         }
     }
 
+    public static function getPatrimoine()
+    {
+        try {
+            $database = Model::getInstance();
+            $query = "SELECT categorie, label, valeur, @capital := @capital + valeur AS capital FROM ( SELECT 'compte' AS categorie, label, montant AS valeur FROM compte WHERE personne_id = 1001 UNION ALL SELECT 'residence' AS categorie, label, prix AS valeur FROM residence WHERE personne_id = 1001 ORDER BY valeur ) AS union_table JOIN (SELECT @capital := 0) AS init;";
+            $statement = $database->prepare($query);
+            $statement->execute();
+            $results = $statement->fetchAll();
+            return $results;
+        } catch (PDOException $e) {
+            printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
+            return NULL;
+        }
+    }
+
 }
 ?>
 <!-- ----- fin ModelResidence -->

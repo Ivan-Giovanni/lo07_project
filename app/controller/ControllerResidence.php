@@ -23,6 +23,17 @@ class ControllerResidence {
        require ($vue);
    }
 
+   public static function patrimoineReadAll()
+   {
+       $results = ModelResidence::getPatrimoine();
+       // ----- Construction chemin de la vue
+       include 'config.php';
+       $vue = $root . '/app/view/residence/viewPatrimoine.php';
+       if (DEBUG)
+           echo ("ControllerResidence : residenceReadAll : vue = $vue");
+       require ($vue);
+   }
+
 }
 ?>
 <!-- ----- fin ControllerResidence -->
