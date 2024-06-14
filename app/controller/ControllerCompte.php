@@ -24,6 +24,76 @@ class ControllerCompte {
         require ($vue);
     }
 
+    // --- Liste des comptes d'un client
+    public static function compteReadMyCompte() {
+        $client_id = BEATRICEID;
+        $results = ModelCompte::getAllMyCompte($client_id);
+        // ----- Construction chemin de la vue
+        include 'config.php';
+        $vue = $root . '/app/view/compte/viewMyAll.php';
+        if (DEBUG)
+            echo ("ControllerCompte : compteReadAll : vue = $vue");
+        require ($vue);
+    }
+
+    // -- Ajout d'un compte
+
+    public static function compteCreate() {
+        $results = ModelBanque::getAll();
+        // ----- Construction chemin de la vue
+        include 'config.php';
+        $vue = $root . '/app/view/compte/viewInsert.php';
+        require ($vue);
+    }
+
+    public static function compteCreated() {
+        $client_id = BEATRICEID;
+        // ajouter une validation des informations du formulaire
+        $results = ModelCompte::insert(
+            htmlspecialchars($_GET['label']),
+            htmlspecialchars($_GET['montant']),
+            htmlspecialchars($_GET['banque_id']),
+            htmlspecialchars($client_id)
+        );
+        // ----- Construction chemin de la vue
+        include 'config.php';
+        $vue = $root . '/app/view/compte/viewInserted.php';
+        require ($vue);
+    }
+
+    //Transfert d'argent
+    public static function compteTransfer() {
+        $client_id = BEATRICEID;
+        // compter le nombre de comptes
+        $nbre_compte = ModelCompte::count($client_id);
+        // condition
+        if ($nbre_compte < 2) {
+            echo ("Vous n'avez pas assez de comptes pour effectuer cette opération");
+        } else {
+            // formulaire
+            // ----- Construction chemin de la vue
+            $results = ModelCompte::getMylabel($client_id);
+            include 'config.php';
+            $vue = $root . '/app/view/compte/viewTransfer.php';
+            require ($vue);
+        }
+    }
+
+    public static function compteTransfered() {
+        // - montant pour debit_id
+        // + montant pour credit_id
+        // ajouter une validation des informations du formulaire
+        $results = ModelCompte::transfer(
+            htmlspecialchars($_GET['debit_id']),
+            htmlspecialchars($_GET['credit_id']),
+            htmlspecialchars($_GET['montant'])
+        );
+        // ----- Construction chemin de la vue
+        include 'config.php';
+        $vue = $root . '/app/view/compte/viewTransfered.php';
+        require ($vue);
+    }
+
     public static function compteSelectForTransfert()
     {
         $results = ModelCompte::getAllComptePersonne(1001);

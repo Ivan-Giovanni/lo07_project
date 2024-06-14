@@ -34,6 +34,19 @@ class ControllerResidence {
        require ($vue);
    }
 
+    // résidences du client connecté
+    public static function residenceReadMyresidence() {
+        $client_id = BEATRICEID;
+        $results = ModelResidence::getAllMyresidence($client_id);
+        // ----- Construction chemin de la vue
+        include 'config.php';
+        $vue = $root . '/app/view/residence/viewAllMy.php';
+        if (DEBUG)
+            echo ("ControllerResidence : residenceReadMyresidence : vue = $vue");
+        require ($vue);
+
+    }
+
 }
 ?>
 <!-- ----- fin ControllerResidence -->

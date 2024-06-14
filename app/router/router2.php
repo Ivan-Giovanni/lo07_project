@@ -40,10 +40,16 @@ switch ($action) {
     case "compteReadAll":
     case "compteSelectForTransfert":
     case "transfertInitie":
+    case "compteReadMyCompte":
+    case "compteCreate":
+    case "compteCreated":
+    case "compteTransfer":
+    case "compteTransfered":
         ControllerCompte::$action($args);
         break;
     // -----------------------------------------------//
     case "residenceReadAll":
+    case "residenceReadMyresidence":
     case "patrimoineReadAll":
         ControllerResidence::$action($args);
         break;
