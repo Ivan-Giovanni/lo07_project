@@ -1,5 +1,5 @@
 
-<!-- ----- début viewInsert -->
+<!-- ----- début viewInsert     -->
 
 <?php
 require ($root . '/app/view/fragment/fragmentCaveHeader.html');
