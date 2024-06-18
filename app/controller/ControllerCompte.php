@@ -3,6 +3,7 @@
 <?php
 require_once '../model/ModelCompte.php';
 
+
 class ControllerCompte {
     // --- page d'acceuil
     public static function caveAccueil() {
@@ -26,7 +27,7 @@ class ControllerCompte {
 
     public static function compteSelectForTransfert()
     {
-        $results = ModelCompte::getAllComptePersonne(1001);
+        $results = ModelCompte::getAllComptePersonne($_SESSION['user_info']['id']);
         include "config.php";
         $vue = $root . '/app/view/compte/viewSelectForTransfert.php';
         if (DEBUG)
@@ -44,6 +45,43 @@ class ControllerCompte {
 
         include 'config.php';
         $vue = $root . '/app/view/compte/viewTransfered.php';
+        require ($vue);
+    }
+
+    // --- Liste des comptes d'un client
+    public static function compteReadMyCompte() {
+        $client_id = $_SESSION['user_info']['id'];
+        $results = ModelCompte::getAllMyCompte($client_id);
+        // ----- Construction chemin de la vue
+        include 'config.php';
+        $vue = $root . '/app/view/compte/viewAllMy.php';
+        if (DEBUG)
+            echo ("ControllerCompte : compteReadAll : vue = $vue");
+        require ($vue);
+    }
+
+    // -- Ajout d'un compte
+
+    public static function compteCreate() {
+        $results = ModelBanque::getAll();
+        // ----- Construction chemin de la vue
+        include 'config.php';
+        $vue = $root . '/app/view/compte/viewInsert.php';
+        require ($vue);
+    }
+
+    public static function compteCreated() {
+        $client_id = $_SESSION['user_info']['id'];
+        // ajouter une validation des informations du formulaire
+        $results = ModelCompte::insert(
+            htmlspecialchars($_GET['label']),
+            htmlspecialchars($_GET['montant']),
+            htmlspecialchars($_GET['banque_id']),
+            htmlspecialchars($client_id)
+        );
+        // ----- Construction chemin de la vue
+        include 'config.php';
+        $vue = $root . '/app/view/compte/viewInserted.php';
         require ($vue);
     }
 

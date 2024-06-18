@@ -1,4 +1,4 @@
-<!-- ----- début viewAll -->
+<!-- ----- début viewAllMy -->
 <?php
 
 require($root . '/app/view/fragment/fragmentCaveHeader.html');
@@ -14,32 +14,29 @@ require($root . '/app/view/fragment/fragmentCaveHeader.html');
     <table class="table table-striped table-bordered">
         <thead>
         <tr>
-            <th scope="col">categorie</th>
-            <th scope="col">label</th>
-            <th scope="col">montant</th>
-            <th scope="col">captital</th>
+            <th scope="col">Label</th>
+            <th scope="col">Ville</th>
+            <th scope="col">Prix</th>
+
+
         </tr>
         </thead>
         <tbody>
         <?php
 
         echo("<div class='mt-2 mb-2 p-2'>");
-        echo("<h2 style='color: red; text-align: center'>Mon Patrimoine</h2>");
+        echo("<h2 style='color: red; text-align: center'>Liste de mes residences</h2>");
         echo("</div>");
 
 
         $cols = $results[0];
         $datas = $results[1];
 
-        // La liste des vins est dans une variable $results
+        // La liste des residences est dans une variable $results
+
         foreach ($results as $element) {
-            printf(
-                "<tr><td>%s</td><td>%s</td><td>%.2f</td><td>%.2f</td></tr>",
-                $element[0],
-                $element[1],
-                $element[2],
-                $element[3]
-            );
+            printf("<tr><td>%s</td><td>%s</td><td>%.2f</td></tr>",
+                $element->getLabel(), $element->getVille(), $element->getPrix());
         }
         ?>
         </tbody>
@@ -47,4 +44,4 @@ require($root . '/app/view/fragment/fragmentCaveHeader.html');
 </div>
 <?php include $root . '/app/view/fragment/fragmentCaveFooter.html'; ?>
 
-<!-- ----- fin viewAll -->
+<!-- ----- fin viewAllMy -->

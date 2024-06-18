@@ -1,11 +1,14 @@
 <!-- ----- debut Router1 -->
 <?php
+
 require('../controller/ControllerAdminstrateur.php');
 require('../controller/ControllerBanque.php');
 require('../controller/ControllerClient.php');
 require('../controller/ControllerCompte.php');
 require('../controller/ControllerResidence.php');
 require('../controller/ControllerCave.php');
+
+
 
 // --- récupération de l'action passée dans l'URL
 $query_string = $_SERVER['QUERY_STRING'];
@@ -40,10 +43,14 @@ switch ($action) {
     case "compteReadAll":
     case "compteSelectForTransfert":
     case "transfertInitie":
+    case "compteReadMyCompte":
+    case "compteCreate":
+    case "compteCreated":
         ControllerCompte::$action($args);
         break;
     // -----------------------------------------------//
     case "residenceReadAll":
+    case "residenceReadMyresidence":
     case "patrimoineReadAll":
         ControllerResidence::$action($args);
         break;

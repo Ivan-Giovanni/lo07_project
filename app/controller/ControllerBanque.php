@@ -56,7 +56,7 @@ class ControllerBanque {
 
         $results = ModelCompte::getAllCompte($banqueId);
         include 'config.php';
-        $vue = $root. '/app/view/compte/viewAll.php';
+        $vue = $root. '/app/view/compte/viewAllCompteBanque.php';
         require ($vue);
     }
 

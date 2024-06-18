@@ -1,6 +1,8 @@
 
 <!-- ----- debut ControllerClient -->
 <?php
+session_start();
+
 require_once '../model/ModelPersonne.php';
 
 class ControllerClient {
@@ -36,15 +38,15 @@ class ControllerClient {
 
     public static function clientLoggedIn()
     {
-        $results = ModelPersonne::checkIfExists(
+        $results_login = ModelPersonne::checkIfExists(
             htmlspecialchars($_GET['login']),
             htmlspecialchars($_GET['password'])
         );
 
         include 'config.php';
 
-        if(!empty($results)) {
-            foreach ($results as $element) {
+        if(!empty($results_login)) {
+            foreach ($results_login as $element) {
                 if($element["statut"] == 0) {
                     $vue = $root . '/app/view/viewCaveAccueilBoss.php';
                 }
@@ -53,6 +55,20 @@ class ControllerClient {
                 }
             }
         }
+
+        foreach ($results_login as $element) {
+            $nom = $element["nom"];
+            $prenom = $element["prenom"];
+            $id = $element["id"];
+            $statut = $element["statut"];
+            $login = $element["login"];
+            $password = $element["password"];
+        }
+
+        $results_login_array = ["nom" => $nom, "prenom" => $prenom, "id" => $id, "statut" => $statut, "login" => $login, "password" => $password];
+
+        $_SESSION['user_info'] = $results_login_array;
+
         require ($vue);
     }
 
