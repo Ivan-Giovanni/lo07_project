@@ -29,9 +29,6 @@ require($root . '/app/view/fragment/fragmentCaveHeader.html');
         echo("</div>");
 
 
-        $cols = $results[0];
-        $datas = $results[1];
-
         // La liste des residences est dans une variable $results
 
         foreach ($results as $element) {

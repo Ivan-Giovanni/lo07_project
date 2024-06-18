@@ -188,6 +188,37 @@ class ModelPersonne
         }
     }
 
+    public static function insert($nom, $prenom,$login, $password)
+    {
+        try {
+            $database = Model::getInstance();
+
+            $query = "select max(id) from personne";
+            $statement = $database->query($query);
+            $tuple = $statement->fetch();
+            $id = $tuple['0'];
+            $id++;
+
+            $statut = self::CLIENT;
+
+            // ajout d'un nouveau tuple;
+            $query = "insert into personne value (:id, :nom, :prenom, :statut, :login, :password)";
+            $statement = $database->prepare($query);
+            $statement->execute([
+                'id' => $id,
+                'nom' => $nom,
+                'prenom' => $prenom,
+                'statut' => $statut,
+                'login' => $login,
+                'password' => $password
+            ]);
+            return $id;
+        } catch (PDOException $e) {
+            printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
+            return -1;
+        }
+    }
+
 }
 ?>
 <!-- ----- fin ModelPersonne -->

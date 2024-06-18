@@ -33,6 +33,8 @@ switch ($action) {
     case "clientLogin":
     case "clientLoggedIn":
     case "clientDeconnexion":
+    case "clientRegister":
+    case "clientRegistered":
         ControllerClient::$action($args);
         break;
     // -----------------------------------------------//

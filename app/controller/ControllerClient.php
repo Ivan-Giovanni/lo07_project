@@ -72,6 +72,22 @@ class ControllerClient {
         require ($vue);
     }
 
+    public static function clientRegistered()
+    {
+        $results = ModelPersonne::insert(
+            htmlspecialchars($_GET['nom']),
+            htmlspecialchars($_GET['prenom']),
+            htmlspecialchars($_GET['login']),
+            htmlspecialchars($_GET['password'])
+        );
+
+        include 'config.php';
+        $vue = $root . '/app/view/client/viewRegistered.php';
+        if (DEBUG)
+            echo ("ControllerClient : clientReadAll : vue = $vue");
+        require ($vue);
+    }
+
     public static function clientDeconnexion()
     {
         include 'config.php';
@@ -80,6 +96,17 @@ class ControllerClient {
             echo ("ControllerClient : clientReadAll : vue = $vue");
         require ($vue);
     }
+
+
+    public static function clientRegister()
+    {
+        include 'config.php';
+        $vue = $root . '/app/view/client/viewRegister.php';
+        if (DEBUG)
+            echo ("ControllerClient : clientReadAll : vue = $vue");
+        require ($vue);
+    }
+
 
 }
 ?>

@@ -25,18 +25,6 @@ class ControllerCompte {
         require ($vue);
     }
 
-    // --- Liste des comptes d'un client
-    public static function compteReadMyCompte() {
-        $client_id = BEATRICEID;
-        $results = ModelCompte::getAllMyCompte($client_id);
-        // ----- Construction chemin de la vue
-        include 'config.php';
-        $vue = $root . '/app/view/compte/viewMyAll.php';
-        if (DEBUG)
-            echo ("ControllerCompte : compteReadAll : vue = $vue");
-        require ($vue);
-    }
-
     // -- Ajout d'un compte
 
     public static function compteCreate() {
@@ -44,21 +32,6 @@ class ControllerCompte {
         // ----- Construction chemin de la vue
         include 'config.php';
         $vue = $root . '/app/view/compte/viewInsert.php';
-        require ($vue);
-    }
-
-    public static function compteCreated() {
-        $client_id = BEATRICEID;
-        // ajouter une validation des informations du formulaire
-        $results = ModelCompte::insert(
-            htmlspecialchars($_GET['label']),
-            htmlspecialchars($_GET['montant']),
-            htmlspecialchars($_GET['banque_id']),
-            htmlspecialchars($client_id)
-        );
-        // ----- Construction chemin de la vue
-        include 'config.php';
-        $vue = $root . '/app/view/compte/viewInserted.php';
         require ($vue);
     }
 
@@ -127,16 +100,6 @@ class ControllerCompte {
         $vue = $root . '/app/view/compte/viewAllMy.php';
         if (DEBUG)
             echo ("ControllerCompte : compteReadAll : vue = $vue");
-        require ($vue);
-    }
-
-    // -- Ajout d'un compte
-
-    public static function compteCreate() {
-        $results = ModelBanque::getAll();
-        // ----- Construction chemin de la vue
-        include 'config.php';
-        $vue = $root . '/app/view/compte/viewInsert.php';
         require ($vue);
     }
 

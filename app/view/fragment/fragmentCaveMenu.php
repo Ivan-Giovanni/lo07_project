@@ -28,7 +28,7 @@
                     <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">SE CONNECTER</a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="router2.php?action=clientLogin">Login</a></li>
-                        <li><a class="dropdown-item" href="?">S'inscrire</a></li>
+                        <li><a class="dropdown-item" href="router2.php?action=clientRegister">S'inscrire</a></li>
                     </ul>
                 </li>
 
