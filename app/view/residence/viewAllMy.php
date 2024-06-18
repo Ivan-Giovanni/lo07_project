@@ -1,4 +1,4 @@
-<!-- ----- début viewAllMy -->
+<!-- ----- debut viewAllMy -->
 <?php
 
 require($root . '/app/view/fragment/fragmentCaveHeader.html');
