@@ -115,6 +115,23 @@ class ModelResidence
             return NULL;
         }
     }
+    // les residences d'un client
+    public static function getAllMyresidence($personne_id)
+    {
+        try {
+            $database = Model::getInstance();
+            $query = "select label, ville, prix from residence where personne_id = :personne_id;";
+            $statement = $database->prepare($query);
+            $statement->execute([
+                'personne_id' => $personne_id
+            ]);
+            $results = $statement->fetchAll(PDO::FETCH_CLASS, "ModelResidence");
+            return $results;
+        } catch (PDOException $e) {
+            printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
+            return NULL;
+        }
+    }
 
     // les residences d'un client
     public static function getAllMyresidence($personne_id)
