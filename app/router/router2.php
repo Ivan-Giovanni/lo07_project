@@ -63,6 +63,7 @@ switch ($action) {
     case "banqueCreated":
     case "banqueIdFound":
     case "banqueSearchIdByName":
+    case "banqueEtPays":
         ControllerBanque::$action($args);
         break;
 

@@ -3,7 +3,7 @@
 <body>
   <div class="container">
     <?php
-      include $root . '/app/view/fragment/fragmentCaveMenu.html';
+      include $root . '/app/view/fragment/fragmentCaveMenuBoss.html';
       include $root . '/app/view/fragment/fragmentCaveJumbotron.html';
       ?>
 
