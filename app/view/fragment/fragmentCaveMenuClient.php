@@ -55,7 +55,10 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">INNOVATIONS</a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="router2.php?action=?????">?</a></li>
+                        <li><a class="dropdown-item" href="router2.php?action=banqueEtPays">Banque par pays</a></li>
+                        <li><a class="dropdown-item" href="router2.php?action=patrimoineForbes">Forbes richest
+                                personalities</a></li>
+                        <!-- utiliser directement la dernière ligne du capital dans la section patrimoine -->
                     </ul>
                 </li>
 

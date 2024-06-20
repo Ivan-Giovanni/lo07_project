@@ -74,7 +74,7 @@ class ControllerBanque
         // Transformation des données pour obtenir le nombre de banques par pays
         $banquesParPays = [];
         foreach ($results as $banque) {
-            $pays = $banque->getPays(); // Assurez-vous que vous avez une méthode getPays dans ModelBanque
+            $pays = $banque->getPays();
             if (!isset($banquesParPays[$pays])) {
                 $banquesParPays[$pays] = 0;
             }

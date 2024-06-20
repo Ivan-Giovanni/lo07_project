@@ -151,6 +151,21 @@ class ModelResidence
         }
     }
 
+    public static function getNetWorth()
+    {
+        try {
+            $database = Model::getInstance();
+            $query = "SELECT p.id, p.nom, p.prenom, COALESCE(c.total_comptes, 0) AS total_comptes, COALESCE(r.total_residences, 0) AS total_residences, COALESCE(c.total_comptes, 0) + COALESCE(r.total_residences, 0) AS patrimoine_total FROM personne p LEFT JOIN ( SELECT personne_id, SUM(montant) AS total_comptes FROM compte GROUP BY personne_id ) c ON p.id = c.personne_id LEFT JOIN ( SELECT personne_id, SUM(prix) AS total_residences FROM residence GROUP BY personne_id ) r ON p.id = r.personne_id WHERE p.id != 0 ORDER BY p.id;";
+            $statement = $database->prepare($query);
+            $statement->execute();
+            $results = $statement->fetchAll();
+            return $results;
+        } catch (PDOException $e) {
+            printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
+            return NULL;
+        }
+    }
+
 }
 ?>
 <!-- ----- fin ModelResidence -->

@@ -54,6 +54,7 @@ switch ($action) {
     case "residenceReadAll":
     case "residenceReadMyresidence":
     case "patrimoineReadAll":
+    case "patrimoineForbes":
         ControllerResidence::$action($args);
         break;
     // -----------------------------------------------//
