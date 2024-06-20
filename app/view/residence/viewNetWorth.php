@@ -62,7 +62,7 @@ require($root . '/app/view/fragment/fragmentCaveHeader.html');
                         },
                         title: {
                             display: true,
-                            text: 'Classement des personnes par patrimoine'
+                            text: 'Classement des personnes les plus riches'
                         }
                     }
                 }
