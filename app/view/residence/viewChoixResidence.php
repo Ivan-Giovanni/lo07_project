@@ -1,3 +1,4 @@
+
 <!-- ----- début viewChoix -->
 
 <?php
@@ -22,10 +23,10 @@ require ($root . '/app/view/fragment/fragmentCaveHeader.html');
             <input type="hidden" name='action' value='residenceTobuy'>
 
             <label class='w-25' for="id">Sélectionnez une résidence: </label> <br>
-            <select name="residence_id" id="id">
+            <select name="residence_id" id="residence_id">
                 <?php
                 foreach ($results as $residence) {
-                    echo("<option value=\"" . htmlspecialchars($residence->getId()) . "\>" . htmlspecialchars($residence->getLabel())  . "</option>");
+                    echo("<option value=\"" . htmlspecialchars($residence->getId()) . "\">" . htmlspecialchars($residence->getLabel())  . "</option>");
                 }
 
                 ?>
@@ -42,3 +43,6 @@ require ($root . '/app/view/fragment/fragmentCaveHeader.html');
 <?php include $root . '/app/view/fragment/fragmentCaveFooter.html'; ?>
 
 <!-- ----- fin view Choix -->
+
+
+

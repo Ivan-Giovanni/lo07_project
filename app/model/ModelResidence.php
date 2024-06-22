@@ -8,7 +8,7 @@ class ModelResidence
     private $id, $label, $ville, $prix, $personne_id;
 
     // pas possible d'avoir 2 constructeurs
-    public function __construct($id = NULL, $label = NULL, $ville = NULL, $prix = NULL,  $personne_id = NULL)
+    public function __construct($id = NULL, $label = NULL, $ville = NULL, $prix = NULL, $personne_id = NULL)
     {
         // valeurs nulles si pas de passage de parametres
         if (!is_null($id)) {
@@ -141,7 +141,7 @@ class ModelResidence
             $query = "SELECT categorie, label, valeur, @capital := @capital + valeur AS capital FROM ( SELECT 'compte' AS categorie, label, montant AS valeur FROM compte WHERE personne_id = :personne_id UNION ALL SELECT 'residence' AS categorie, label, prix AS valeur FROM residence WHERE personne_id = :personne_id ORDER BY valeur ) AS union_table JOIN (SELECT @capital := 0) AS init;";
             $statement = $database->prepare($query);
             $statement->execute([
-                    'personne_id' => $_SESSION['user_info']['id']
+                'personne_id' => $_SESSION['user_info']['id']
             ]);
             $results = $statement->fetchAll();
             return $results;
@@ -166,6 +166,93 @@ class ModelResidence
         }
     }
 
+
+    //obtenir l'id du propriétaire
+    public static function IdProprietaire($id)
+    {
+        try {
+            $database = Model::getInstance();
+            $query = "select personne_id from residence where id = :id";
+            $statement = $database->prepare($query);
+            $statement->execute([
+                'id' => $id
+
+            ]);
+            $results = $statement->fetch();
+
+            $results = $results['0'];
+
+
+            return $results;
+        } catch (PDOException $e) {
+            printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
+            return NULL;
+        }
+    }
+
+    //obtenir le prix de la résidence
+    public static function residencePrix($id)
+    {
+        try {
+            $database = Model::getInstance();
+            $query = "select prix from residence where id = :id";
+            $statement = $database->prepare($query);
+            $statement->execute([
+                'id' => $id
+
+            ]);
+
+
+            $results = $statement->fetch();
+            $results = $results['prix'];
+
+            return $results;
+        } catch (PDOException $e) {
+            printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
+            return NULL;
+        }
+    }
+
+    public static function changePersonneResidence($id, $personne_id)
+    {
+
+        try {
+            $database = Model::getInstance();
+            $query = "UPDATE `residence` SET `personne_id`= :personne_id WHERE id = :id";
+            $statement = $database->prepare($query);
+            $statement->execute([
+                'id' => $id,
+                'personne_id' => $personne_id
+
+            ]);
+            $results = 1;
+            return $results;
+        } catch (PDOException $e) {
+            printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
+            return NULL;
+        }
+
+    }
+
+    // residences proposées pour l'achat
+    public static function getResidence($personne_id) {
+
+        try {
+            $database = Model::getInstance();
+            $query = "select id, label, ville, prix, personne_id from residence where personne_id != :personne_id";
+            $statement = $database->prepare($query);
+            $statement->execute([
+                'personne_id' => $personne_id
+            ]);
+            $results = $statement->fetchAll(PDO::FETCH_CLASS, "ModelResidence");
+            return $results;
+        } catch (PDOException $e) {
+            printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
+            return NULL;
+        }
+    }
+
 }
+
 ?>
 <!-- ----- fin ModelResidence -->

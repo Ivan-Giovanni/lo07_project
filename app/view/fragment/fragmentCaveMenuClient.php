@@ -38,7 +38,7 @@
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="router2.php?action=residenceReadMyresidence">Liste de mes
                                 résidences</a></li>
-                        <li><a class="dropdown-item" href="router2.php?action=?????">Achat d'une nouvelle résidence</a>
+                        <li><a class="dropdown-item" href="router2.php?action=residenceAchat">Achat d'une nouvelle résidence</a>
                         </li>
                     </ul>
                 </li>
