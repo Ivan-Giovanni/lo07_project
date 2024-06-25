@@ -8,7 +8,7 @@ class ControllerCompte {
     // --- page d'acceuil
     public static function caveAccueil() {
         include 'config.php';
-        $vue = $root . '/app/view/viewCaveAccueil.php';
+        $vue = $root . '/app/view/viewPatrimoineAccueil.php';
         if (DEBUG)
             echo ("ControllerCompte : caveAccueil : vue = $vue");
         require ($vue);

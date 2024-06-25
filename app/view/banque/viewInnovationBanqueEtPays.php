@@ -1,7 +1,7 @@
 <!-- ----- début viewAll -->
 <?php
 
-require($root . '/app/view/fragment/fragmentCaveHeader.html');
+require($root . '/app/view/fragment/fragmentPatrimoineHeader.html');
 ?>
 
 <html>
@@ -13,6 +13,7 @@ require($root . '/app/view/fragment/fragmentCaveHeader.html');
             align-items: center;
             margin: 20px 0; /* Optionnel : Ajoute un peu de marge autour du graphique */
         }
+
         #pieChart {
             width: 600px; /* Ajustez les dimensions ici */
             height: 600px; /* Ajustez les dimensions ici */
@@ -23,8 +24,12 @@ require($root . '/app/view/fragment/fragmentCaveHeader.html');
 <body>
 <div class="container">
     <?php
-    include $root . '/app/view/fragment/fragmentCaveMenuBoss.html';
-    include $root . '/app/view/fragment/fragmentCaveJumbotron.html';
+    if ($_SESSION['user_info']['statut'] != 1) {
+        include $root . '/app/view/fragment/fragmentPatrimoineMenuBoss.html';
+    } else {
+        include $root . '/app/view/fragment/fragmentPatrimoineMenuClient.php';
+    }
+    include $root . '/app/view/fragment/fragmentPatrimoineJumbotron.html';
     ?>
 
     <h2 style='color: red; text-align: center'>Nombre de banques par pays</h2><br/>
@@ -42,12 +47,12 @@ require($root . '/app/view/fragment/fragmentCaveHeader.html');
                     datasets: [{
                         data: <?php echo json_encode(array_values($banquesParPays)); ?>,
                         backgroundColor: [
-                            'rgba(255, 99, 132, 0.2)',
-                            'rgba(54, 162, 235, 0.2)',
-                            'rgba(255, 206, 86, 0.2)',
-                            'rgba(75, 192, 192, 0.2)',
-                            'rgba(153, 102, 255, 0.2)',
-                            'rgba(255, 159, 64, 0.2)'
+                            'rgba(255, 99, 132, 0.8)',
+                            'rgba(54, 162, 235, 0.8)',
+                            'rgba(255, 206, 86, 0.8)',
+                            'rgba(75, 192, 192, 0.8)',
+                            'rgba(153, 102, 255, 0.8)',
+                            'rgba(255, 159, 64, 0.8)'
                         ],
                         borderColor: [
                             'rgba(255, 99, 132, 1)',
@@ -76,6 +81,6 @@ require($root . '/app/view/fragment/fragmentCaveHeader.html');
         });
     </script>
 </div>
-<?php include $root . '/app/view/fragment/fragmentCaveFooter.html'; ?>
+<?php include $root . '/app/view/fragment/fragmentPatrimoineFooter.html'; ?>
 
 <!-- ----- fin viewAll -->

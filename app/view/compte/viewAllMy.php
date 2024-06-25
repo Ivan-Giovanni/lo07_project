@@ -1,7 +1,7 @@
 <!-- ----- début viewAll -->
 <?php
 
-require($root . '/app/view/fragment/fragmentCaveHeader.html');
+require($root . '/app/view/fragment/fragmentPatrimoineHeader.html');
 
 // Check if user information is available in the session
 if (isset($_SESSION['user_info'])) {
@@ -24,8 +24,8 @@ if (isset($_SESSION['user_info'])) {
 <body>
 <div class="container">
     <?php
-    include $root . '/app/view/fragment/fragmentCaveMenuClient.php';
-    include $root . '/app/view/fragment/fragmentCaveJumbotron.html';
+    include $root . '/app/view/fragment/fragmentPatrimoineMenuClient.php';
+    include $root . '/app/view/fragment/fragmentPatrimoineJumbotron.html';
     ?>
 
     <table class="table table-striped table-bordered">
@@ -60,6 +60,6 @@ if (isset($_SESSION['user_info'])) {
         </tbody>
     </table>
 </div>
-<?php include $root . '/app/view/fragment/fragmentCaveFooter.html'; ?>
+<?php include $root . '/app/view/fragment/fragmentPatrimoineFooter.html'; ?>
 
 <!-- ----- fin viewAll -->

@@ -1,13 +1,13 @@
 <!-- ----- début viewAll -->
 <?php
 
-require($root . '/app/view/fragment/fragmentCaveHeader.html');
+require($root . '/app/view/fragment/fragmentPatrimoineHeader.html');
 ?>
 
 <div class="container">
     <?php
-    include $root . '/app/view/fragment/fragmentCaveMenuDefault.php';
-    include $root . '/app/view/fragment/fragmentCaveJumbotron.html';
+    include $root . '/app/view/fragment/fragmentPatrimoineMenuDefault.php';
+    include $root . '/app/view/fragment/fragmentPatrimoineJumbotron.html';
     ?>
 
     <?php
@@ -16,7 +16,7 @@ require($root . '/app/view/fragment/fragmentCaveHeader.html');
     echo("</div>");
     ?>
 
-    <div class="card-body bg-warning">
+    <div class="card-body bg-primary">
         <div class='mx-lg-3'>
 
             <br>
@@ -51,6 +51,6 @@ require($root . '/app/view/fragment/fragmentCaveHeader.html');
 </div>
 
 </div>
-<?php include $root . '/app/view/fragment/fragmentCaveFooter.html'; ?>
+<?php include $root . '/app/view/fragment/fragmentPatrimoineFooter.html'; ?>
 
 <!-- ----- fin viewAll -->

@@ -8,7 +8,7 @@ class ControllerResidence
     public static function caveAccueil()
     {
         include 'config.php';
-        $vue = $root . '/app/view/viewCaveAccueil.php';
+        $vue = $root . '/app/view/viewPatrimoineAccueil.php';
         if (DEBUG)
             echo("ControllerVin : caveAccueil : vue = $vue");
         require($vue);

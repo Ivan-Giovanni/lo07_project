@@ -1,6 +1,6 @@
 <!-- ----- début viewNetWorth.php ----- -->
 <?php
-require($root . '/app/view/fragment/fragmentCaveHeader.html');
+require($root . '/app/view/fragment/fragmentPatrimoineHeader.html');
 ?>
 
 <html>
@@ -18,8 +18,12 @@ require($root . '/app/view/fragment/fragmentCaveHeader.html');
 <body>
 <div class="container">
     <?php
-    include $root . '/app/view/fragment/fragmentCaveMenuBoss.html';
-    include $root . '/app/view/fragment/fragmentCaveJumbotron.html';
+    if ($_SESSION['user_info']['statut'] != 1) {
+        include $root . '/app/view/fragment/fragmentPatrimoineMenuBoss.html';
+    } else {
+        include $root . '/app/view/fragment/fragmentPatrimoineMenuClient.php';
+    }
+    include $root . '/app/view/fragment/fragmentPatrimoineJumbotron.html';
     ?>
 
     <h2 style='color: red; text-align: center'>Forbes Richest Personalities</h2><br/>
@@ -44,7 +48,7 @@ require($root . '/app/view/fragment/fragmentCaveHeader.html');
                     datasets: [{
                         label: 'Net Worth',
                         data: data,
-                        backgroundColor: 'rgb(81,133,236, 0.3)',
+                        backgroundColor: 'rgb(81,133,236, 0.8)',
                         borderColor: 'rgb(81,133,236, 1)',
                         borderWidth: 1
                     }]
@@ -71,6 +75,6 @@ require($root . '/app/view/fragment/fragmentCaveHeader.html');
     </script>
 
 </div>
-<?php include $root . '/app/view/fragment/fragmentCaveFooter.html'; ?>
+<?php include $root . '/app/view/fragment/fragmentPatrimoineFooter.html'; ?>
 
 <!-- ----- fin viewNetWorth.php ----- -->

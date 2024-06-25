@@ -8,7 +8,7 @@ class ControllerBanque
     public static function caveAccueil()
     {
         include 'config.php';
-        $vue = $root . '/app/view/viewCaveAccueil.php';
+        $vue = $root . '/app/view/viewPatrimoineAccueil.php';
         if (DEBUG)
             echo("ControllerBanque : caveAccueil : vue = $vue");
         require($vue);

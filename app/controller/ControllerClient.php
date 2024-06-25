@@ -9,7 +9,7 @@ class ControllerClient {
     // --- page d'acceuil
     public static function caveAccueil() {
         include 'config.php';
-        $vue = $root . '/app/view/viewCaveAccueil.php';
+        $vue = $root . '/app/view/viewPatrimoineAccueil.php';
         if (DEBUG)
             echo ("ControllerVin : caveAccueil : vue = $vue");
         require ($vue);
@@ -48,10 +48,10 @@ class ControllerClient {
         if(!empty($results_login)) {
             foreach ($results_login as $element) {
                 if($element["statut"] == 0) {
-                    $vue = $root . '/app/view/viewCaveAccueilBoss.php';
+                    $vue = $root . '/app/view/viewPatrimoineAccueilBoss.php';
                 }
                 else {
-                    $vue = $root . '/app/view/viewCaveAccueilClient.php';
+                    $vue = $root . '/app/view/viewPatrimoineAccueilClient.php';
                 }
             }
         }
@@ -91,7 +91,7 @@ class ControllerClient {
     public static function clientDeconnexion()
     {
         include 'config.php';
-        $vue = $root . '/app/view/viewCaveAccueil.php';
+        $vue = $root . '/app/view/viewPatrimoineAccueil.php';
         if (DEBUG)
             echo ("ControllerClient : clientReadAll : vue = $vue");
         require ($vue);

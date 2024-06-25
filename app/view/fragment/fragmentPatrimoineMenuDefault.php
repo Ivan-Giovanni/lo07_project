@@ -4,9 +4,9 @@
 
 <!-- ----- début fragmentCaveMenu -->
 
-<nav class="navbar navbar-expand-lg bg-warning fixed-top">
+<nav class="navbar navbar-expand-lg bg-primary fixed-top">
     <div class="container-fluid">
-        <a class="navbar-brand" href="router2.php?action=CaveAccueil">LO07 PROJET - GESTION DU PATRIMOINE</a>
+        <a class="navbar-brand" href="router2.php?action=CaveAccueil">NZOAFO-ZANGUE - GESTION DU PATRIMOINE</a>
         <a class="navbar-brand" href="router2.php?action=CaveAccueil"> | </a>
         <a class="navbar-brand" href="router2.php?action=CaveAccueil"> | </a>
         <a class="navbar-brand" href="router2.php?action=CaveAccueil"> | </a>

@@ -2,14 +2,14 @@
 <!-- ----- début viewChoix -->
 
 <?php
-require ($root . '/app/view/fragment/fragmentCaveHeader.html');
+require ($root . '/app/view/fragment/fragmentPatrimoineHeader.html');
 ?>
 
 <body>
 <div class="container">
     <?php
-    include $root . '/app/view/fragment/fragmentCaveMenuClient.php';
-    include $root . '/app/view/fragment/fragmentCaveJumbotron.html';
+    include $root . '/app/view/fragment/fragmentPatrimoineMenuClient.php';
+    include $root . '/app/view/fragment/fragmentPatrimoineJumbotron.html';
     ?>
 
     <form role="form" method='get' action='router2.php'>
@@ -40,7 +40,7 @@ require ($root . '/app/view/fragment/fragmentCaveHeader.html');
     </form>
     <p/>
 </div>
-<?php include $root . '/app/view/fragment/fragmentCaveFooter.html'; ?>
+<?php include $root . '/app/view/fragment/fragmentPatrimoineFooter.html'; ?>
 
 <!-- ----- fin view Choix -->
 

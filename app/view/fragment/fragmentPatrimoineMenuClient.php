@@ -4,9 +4,9 @@
 
 <!-- ----- début fragmentCaveMenu -->
 
-<nav class="navbar navbar-expand-lg bg-warning fixed-top">
+<nav class="navbar navbar-expand-lg bg-primary fixed-top">
     <div class="container-fluid">
-        <a class="navbar-brand" href="router2.php?action=CaveAccueil">LO07 PROJET</a>
+        <a class="navbar-brand" href="router2.php?action=CaveAccueil">NZOAFO-ZANGUE</a>
         <a class="navbar-brand" href="router2.php?action=CaveAccueil"> | </a>
         <a class="navbar-brand" href="router2.php?action=CaveAccueil"> <?php echo($_SESSION['user_info']['nom']); ?> </a>
         <a class="navbar-brand" href="router2.php?action=CaveAccueil"> | </a>
